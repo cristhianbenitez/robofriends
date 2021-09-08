@@ -17,7 +17,7 @@ function App() {
     return robots.name.toLowerCase().includes(searchField.toLowerCase());
   });
 
-  return robots.lenght === 10 ? (
+  return !robots.length ? (
     <h1 className='tc'>Loading</h1>
   ) : (
     <div className='tc'>
