@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Cards from './components/Cards';
+import SearchBox from './components/SearchBox';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [robots, setRobots] = useState([]);
+  const [searchField, setSearchField] = useState('');
+
+  useEffect(() => {
+    axios
+      .get('https://jsonplaceholder.typicode.com/users')
+      .then((res) => setRobots(res.data));
+  }, []);
+
+  const filteredRobots = robots.filter((robots) => {
+    return robots.name.toLowerCase().includes(searchField.toLowerCase());
+  });
+
+  return robots.lenght === 10 ? (
+    <h1 className='tc'>Loading</h1>
+  ) : (
+    <div className='tc'>
+      <h1 className='f1 light-blue'>RoboFriends</h1>
+      <SearchBox searchChange={(e) => setSearchField(e.target.value)} />
+      <Cards robofriends={filteredRobots} />
     </div>
   );
 }
