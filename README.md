@@ -1,3 +1,3 @@
 # robofriends
 
-[LIVE VERSION](somber-dog.surge.sh)
+[LIVE VERSION](http://somber-dog.surge.sh/)
