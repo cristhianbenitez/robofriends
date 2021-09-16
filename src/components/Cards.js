@@ -6,10 +6,10 @@ export default function Cards({ robofriends }) {
       {robofriends.map((robofriend) => {
         const { id, username, name, email } = robofriend;
         return (
-          <div className='bg-blue dib br3 pa3 ma2 grow bw2 shadow-5' key={id}>
+          <div className="bg-blue dib br3 pa3 ma2 grow bw2 shadow-5" key={id}>
             <img
               src={`https://robohash.org/${username}?200x200`}
-              alt='robofriend'
+              alt="robofriend"
             />
             <div>
               <h2>{name}</h2>
